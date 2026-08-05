@@ -6,6 +6,12 @@ flying bird     flyless bird
 
 eagle           penguin
 
+public is an instance
+
+private has an instance
+
+some method is part of the public interface
+
 */
 
 #include <iostream>
