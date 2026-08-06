@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug Active File",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    // FIXES THE GDB FREEZE LOGIC
+                    "description": "Disable remote debuginfod servers to bypass terminal hang",
+                    "text": "set debuginfod urls \"\"",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "ale builder"
+        }
+    ]
+}
