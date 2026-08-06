@@ -5,7 +5,8 @@
             "type": "shell",
             "label": "ale builder",
             // The magic is here: compiling, then running the binary sequentially
-            "command": "g++ -g -std=c++20 -Wall \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
+            "command": "clang++ -g -std=c++20 -Wall \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
+            //"command": "g++ -g -std=c++20 -Wall \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}\" && \"${fileDirname}/${fileBasenameNoExtension}\"",
             "options": {
                 "cwd": "${fileDirname}"
             },

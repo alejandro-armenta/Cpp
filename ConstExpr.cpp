@@ -23,7 +23,34 @@ class Ratio {
   D denom_;
 };
 
-// especialization
+template <typename D>
+class Ratio<double, D> {
+ public:
+  Ratio() : value_() {}
+
+  Ratio(const double& num, const D& denom)
+      : value_(num / double(denom)) {}
+
+  operator double() const { return value_; }
+
+ private:
+  double value_;
+};
+
+template <typename N>
+class Ratio<N, double> {
+ public:
+  Ratio() : value_() {}
+
+  Ratio(const N& num, const double& denom)
+      : value_(double(num) / denom) {}
+
+  operator double() const { return value_; }
+
+ private:
+  double value_;
+};
+
 template <>
 class Ratio<double, double> {
  public:
@@ -42,10 +69,15 @@ class Ratio<double, double> {
   double value_;
 };
 
-int main() {
-  Ratio<int, int> b(4, 4.0);
+template <>
+Ratio<float, float>::operator double() const {
+  return num_ / denom_;
+}
 
-  Ratio<double, double> c = b;
+int main() {
+  Ratio<double, float> b(4, 4.0);
+
+  Ratio<float, double> c(2, 2.0);
 
   std::cout << double(c);
 }
